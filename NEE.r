@@ -11,7 +11,7 @@ hmnee <- ggplot(O13, aes(x = DoY,
                        breaks=c(-10, -8, -6, -4, -2, 0, 2, 4, 6, 8),
                        limits=c(-10, 8)) +
   
-  geom_vline(xintercept = 144, color = "grey", linetype = "dashed", size = 1) +
+  geom_vline(xintercept = 144, color = "black", linetype = "dashed", size = 1) +
   
   theme_bw() +
   

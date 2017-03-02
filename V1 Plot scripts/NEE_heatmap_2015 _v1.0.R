@@ -1,29 +1,22 @@
-# heat map of NEE from Østerlien 2013
+# heat map of NEE from Østerlien 2015
 # version 1.0
 # alistair mcconnell
 
 # define colour palette
-<<<<<<< HEAD
 nee.palette <- colorRampPalette(brewer.pal(11, 'RdBu'), space = "Lab")
 
 # plot the heatmap
-# make sure O13 is set in the global environment
-=======
-nee.palette <- colorRampPalette(brewer.pal(11, 'RdBu'), space='Lab')
-
-# plot the heatmap
-# make sure O13 is set in the global environment
-
->>>>>>> 40b31650da680542d00d20815af59791f338daf0
-NEE_heatmap_13 <- ggplot(O13, aes(x = DoY,
-                                  y = Hour,
-                                  fill = NEE_f)) +
-  geom_tile() +
+# make sure DATA is set in the global environment
+NEE_heatmap_14 <- ggplot(Oesterlien_C_R_2015,
+                         aes(x = DoY,
+                             y = Hour,
+                             fill = NEE_f)) +
+  geom_tile(na.rm = T) +
   
   scale_fill_gradientn(colours = nee.palette(100),
                        na.value = "grey",
-                       breaks=c(-10, -8, -6, -4, -2, 0, 2, 4, 6, 8),
-                       limits=c(-10, 8)) +
+                       breaks=c(-12, -10, -8, -6, -4, -2, 0, 2, 4, 6, 8, 10, 12),
+                       limits=c(-12, 12)) +
   
   geom_vline(xintercept = 144, color = "black", linetype = "dashed", size = 1) +
   
@@ -33,19 +26,13 @@ NEE_heatmap_13 <- ggplot(O13, aes(x = DoY,
   
   ylab("Hour of day") +
   
-<<<<<<< HEAD
   scale_x_continuous(expand = c(0,0),
                      breaks = pretty(O13$DoY, n = 10)) +
   
-  scale_y_continuous(expand = c(0,0),
-=======
-  scale_x_continuous(expand=c(0,0),
-                     breaks = pretty(O13$DoY, n = 10)) +
-  
-  scale_y_continuous(expand=c(0,0),
->>>>>>> 40b31650da680542d00d20815af59791f338daf0
-                     limits = c(0,24),
-                     breaks = c(0,6,12,18,24)) +
+  scale_y_continuous(expand = c(0, 0),
+                     limits = c(0, 23.5),
+                     breaks = c(0, 6, 12, 18, 23.25),
+                     labels = c(0, 6, 12, 18, 24)) +
   
   theme(axis.text.x = element_text(size=12, margin = margin(10,0,0,0, "pt")),
         axis.text.y = element_text(size=12, margin = margin(0,10,0,0, "pt")),
@@ -54,16 +41,12 @@ NEE_heatmap_13 <- ggplot(O13, aes(x = DoY,
         axis.ticks = element_line(size = 1),
         panel.border = element_rect(size = 2)) +
   
-  annotate("text", x = 8, y = 23, label = "(a)", fontface = 2)
+  annotate("text", x = 14, y = 22, label = "(2015)", fontface = 2)
 
 # set colourbar to mach plot height
-<<<<<<< HEAD
-=======
-
->>>>>>> 40b31650da680542d00d20815af59791f338daf0
 panel_height = unit(1,"npc") - sum(ggplotGrob(hmnee)[["heights"]][-3]) - unit(1,"line")
 
-NEE_heatmap_13 <- NEE_heatmap_13 + guides(fill= guide_colourbar(barheight = panel_height,
+NEE_heatmap_14 <- NEE_heatmap_14 + guides(fill= guide_colourbar(barheight = panel_height,
                                                                 title = bquote('NEE ['*mu~ 'mol' ~CO[2]~ m^-2~s^-1*']'),
                                                                 title.position = "right",
                                                                 ticks = F,
@@ -72,5 +55,8 @@ NEE_heatmap_13 <- NEE_heatmap_13 + guides(fill= guide_colourbar(barheight = pane
                                                                 draw.ulim = F,
                                                                 draw.llim = F))
 
+#remove unnecesary variables
+rm(nee.palette)
+
 # draw the plot
-NEE_heatmap_13
+NEE_heatmap_14
