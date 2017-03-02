@@ -59,8 +59,12 @@ hmnee
 
 #### CUMU NEE
 
-O13$NEE_f_g30 <- O13$NEE_f / 1000000 * 30 * 60 * 44
+O13$NEE_f_g30 <- O13$NEE_f / 1000000 * 30 * 60 * 12
 O13$NEE_cumu <- cumsum(O13$NEE_f_g30)
+
+O13$NEE_f_g30raw <- O13$NEE / 1000000 * 30 * 60 * 12
+O13$NEE_f_g30raw[is.na(O13$NEE_f_g30raw)] <- 0
+O13$NEE_cumu_raw <- cumsum(O13$NEE_f_g30raw)
 
 
 cumunee <- ggplot(O13, aes(x = DoY,
@@ -70,6 +74,7 @@ cumunee <- ggplot(O13, aes(x = DoY,
   geom_vline(xintercept = 144, color = "black", linetype = "dashed") +
   geom_hline(yintercept = 0, color = "black") +
   geom_smooth(color = "red", method = "loess", span = 0.1) +
+  #geom_smooth(data = O13, aes(x = DoY, y = NEE_cumu_raw), color = "blue", method = "loess", span = 0.1) +
   
   theme_bw() +
   
@@ -81,7 +86,7 @@ cumunee <- ggplot(O13, aes(x = DoY,
                      breaks = pretty(O13$DoY, n = 10)) +
   
   scale_y_continuous(expand = c(0,0),
-                     limits = c(-200, 200)) +
+                     limits = c(-50, 50)) +
   
   theme(axis.text.x=element_text(size=12, margin = margin(10,0,0,0, "pt")),
         axis.text.y=element_text(size=12, margin = margin(0,10,0,0, "pt")),
@@ -89,8 +94,8 @@ cumunee <- ggplot(O13, aes(x = DoY,
         axis.ticks.length = unit(-5, "points"),
         panel.border = element_rect(size = 2)) +
   
-  annotate("text", x = 8, y = 185, label = "(b)", fontface = 2) +
-  annotate("text", x = 340, y = -80, label = "-34.23 gC / year", fontface = 1)
+  annotate("text", x = 8, y = 185, label = "(b)", fontface = 2)
+  #annotate("text", x = 340, y = -80, label = "-34.23 gC / year", fontface = 1)
 
 cumunee
 
@@ -98,9 +103,10 @@ cumunee
 
 gA <- hmnee
 gB <- cumunee
+gC <- daily_sum
 
-ptest <- subplot(gA, gB,
-                 nrows = 2,
+ptest <- subplot(gA, gB, gC,
+                 nrows = 3,
                  titleX = T,
                  titleY = T
 )
