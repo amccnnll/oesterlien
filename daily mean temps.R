@@ -12,7 +12,7 @@ am.palette <- colorRampPalette(brewer.pal(11, 'RdYlBu'), space='Lab')
 9         #73ACD1
 10        #4574B3
 11        #313594
-
+  
 
 x <- X2015_soilprofile_30mins 
 
@@ -26,25 +26,39 @@ write.csv(dat, file = "2015_soilprofile_dailymeanFINAL_int.csv")
 
 x2 <- aggregate(Temp ~ Day + Depth, data = x, FUN= "mean")
 
+#############################################
+##                                        ##
+##  TO DO: REMOVE -9999 from Oesterlien   ##
+##   files, re-read, make final plots!    ##
+##                                        ##
+#############################################
 
-O13$dailyNEE_30 <- O13$NEE_f * 60 * 30 *12 / 1000000
-O13c <- aggregate(O13, by = list(O13$DoY), FUN = "sum")
-O13c$DoY <- O13c$DoY / 48
+#O13$dailyNEE_30 <- O13$NEE_f * 60 * 30 *12 / 1000000
+daily13 <- Oesterlien_C_R_2013
+daily13$Date <- NULL
 
-daily_sum <- ggplot(O13c, aes(DoY, dailyNEE_30)) +
+daily13$NEE_30 <- daily13$NEE_f * 30 * 60 * 12 / 1000000
+#daily13_mean <- aggregate(daily13, by = list(daily13$DoY), FUN = "mean", na.rm = T)
+daily13_sum <- aggregate(daily13, by = list(daily13$DoY), FUN = "sum", na.rm = T)
+
+daily13_sum$DoY <- daily13_sum$DoY / 48
+daily13_sum$Year <- daily13_sum$Year / 48
+daily13_sum$Hour <- daily13_sum$Hour / 48
+
+daily_sum <- ggplot(daily13_sum, aes(DoY, NEE_30)) +
   
-             geom_segment(xend = O13c$DoY, yend = 0, colour = "#313594", size = 1) +
+             geom_segment(xend = daily13_sum$DoY, yend = 0, colour = "#313594", size = 1) +
         
              geom_smooth(color = "#F36C43", method = "loess", span = 0.1, se = F) +
   
              theme_bw() +
   
              scale_x_continuous(expand = c(0, 0),
-                                breaks = pretty(O13$DoY, n = 10)) +
+                                breaks = pretty(daily13_sum$DoY, n = 10)) +
   
              scale_y_continuous(expand = c(0,0),
-                                limits = c(-0.065, 0.03),
-                                breaks = c(0.02, 0, -0.02, -0.04, -0.06)) +
+                                limits = c(-3, 1.5),
+                                breaks = pretty(daily13_sum$NEE_30, n = 5)) +
   
              theme(axis.text.x = element_text(size=12,
                                               margin = margin(10,0,0,0, "pt")),
