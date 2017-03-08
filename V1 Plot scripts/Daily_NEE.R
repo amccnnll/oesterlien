@@ -43,23 +43,23 @@ daily15_sum$Hour <- daily15_sum$Hour / 48
 # PLOTS
 # 2013
 daily_nee13 <- ggplot(daily13_sum, aes(DoY, NEE_30)) +
-  
+
   geom_segment(xend = daily13_sum$DoY, yend = 0, colour = "#313594") +
-  
+
   geom_smooth(method = "loess", span = 0.08, se = T) +
-  
+
   theme_bw() +
-  
+
   scale_x_continuous(expand = c(0, 0),
                      breaks = pretty(daily13_sum$DoY, n = 10)) +
-  
+
   scale_y_continuous(expand = c(0,0),
                      limits = c(-3, 1.5),
                      breaks = pretty(daily13_sum$NEE_30, n = 5)) +
-  
+
   ylab("Daily NEE gC m-2") +
   xlab("") +
-  
+
   theme(axis.text.x = element_text(size=12,
                                    margin = margin(10,0,0,0, "pt")),
         axis.text.y = element_text(size=12,
@@ -67,29 +67,29 @@ daily_nee13 <- ggplot(daily13_sum, aes(DoY, NEE_30)) +
         axis.title = element_text(size=12),
         axis.ticks.length = unit(-5, "points"),
         panel.border = element_rect(size = 2)) +
-    
+
     annotate("text", x = 14, y = 1.25, label = "(2013)", fontface = 2)
 
 # 2014
 
 daily_nee14 <- ggplot(daily14_sum, aes(DoY, NEE_30)) +
-  
+
   geom_segment(xend = daily14_sum$DoY, yend = 0, colour = "#314594") +
-  
+
   geom_smooth(method = "loess", span = 0.08, se = T) +
-  
+
   theme_bw() +
-  
+
   scale_x_continuous(expand = c(0, 0),
                      breaks = pretty(daily14_sum$DoY, n = 10)) +
-  
+
   scale_y_continuous(expand = c(0,0),
                      limits = c(-3, 1.5),
                      breaks = pretty(daily14_sum$NEE_30, n = 5)) +
-  
+
   ylab("Daily NEE gC m-2") +
   xlab("") +
-  
+
   theme(axis.text.x = element_text(size=12,
                                    margin = margin(10,0,0,0, "pt")),
         axis.text.y = element_text(size=12,
@@ -97,29 +97,29 @@ daily_nee14 <- ggplot(daily14_sum, aes(DoY, NEE_30)) +
         axis.title = element_text(size=12),
         axis.ticks.length = unit(-5, "points"),
         panel.border = element_rect(size = 2)) +
-  
+
   annotate("text", x = 14, y = 1.25, label = "(2014)", fontface = 2)
 
 # 2015
 
 daily_nee15 <- ggplot(daily15_sum, aes(DoY, NEE_30)) +
-  
+
   geom_segment(xend = daily15_sum$DoY, yend = 0, colour = "#315594") +
-  
+
   geom_smooth(method = "loess", span = 0.08, se = T) +
-  
+
   theme_bw() +
-  
+
   scale_x_continuous(expand = c(0, 0),
-                     breaks = pretty(daily15_sum$DoY, n = 10)) +
-  
+                       breaks = pretty(daily15_sum$DoY, n = 10)) +
+
   scale_y_continuous(expand = c(0,0),
                      limits = c(-3, 1.5),
                      breaks = pretty(daily15_sum$NEE_30, n = 5)) +
-  
+
   ylab("Daily NEE gC m-2") +
   xlab("") +
-  
+
   theme(axis.text.x = element_text(size=12,
                                    margin = margin(10,0,0,0, "pt")),
         axis.text.y = element_text(size=12,
@@ -127,7 +127,7 @@ daily_nee15 <- ggplot(daily15_sum, aes(DoY, NEE_30)) +
         axis.title = element_text(size=12),
         axis.ticks.length = unit(-5, "points"),
         panel.border = element_rect(size = 2)) +
-  
+
   annotate("text", x = 14, y = 1.25, label = "(2015)", fontface = 2)
 
 # subplots
@@ -135,6 +135,6 @@ daily_nee <- subplot(daily_nee13, daily_nee14, daily_nee15,
               nrows = 3,
               shareX = T,
               titleX = F,
-              titleY = T) 
+              titleY = T)
 # print
 daily_nee
