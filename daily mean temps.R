@@ -36,16 +36,31 @@ x2 <- aggregate(Temp ~ Day + Depth, data = x, FUN= "mean")
 #O13$dailyNEE_30 <- O13$NEE_f * 60 * 30 *12 / 1000000
 daily13 <- Oesterlien_C_R_2013
 daily13$Date <- NULL
+<<<<<<< HEAD
 
 daily13$NEE_30 <- daily13$NEE_f * 30 * 60 * 12 / 1000000
 #daily13_mean <- aggregate(daily13, by = list(daily13$DoY), FUN = "mean", na.rm = T)
+=======
+daily13_mean <- aggregate(daily13, by = list(daily13$DoY), FUN = "mean", na.rm = T)
+>>>>>>> 92783b1be08099231c2432104c5d09afed830446
 daily13_sum <- aggregate(daily13, by = list(daily13$DoY), FUN = "sum", na.rm = T)
 
 daily13_sum$DoY <- daily13_sum$DoY / 48
 daily13_sum$Year <- daily13_sum$Year / 48
 daily13_sum$Hour <- daily13_sum$Hour / 48
+<<<<<<< HEAD
 
 daily_sum <- ggplot(daily13_sum, aes(DoY, NEE_30)) +
+=======
+
+### check this:
+O13$dailyNEE_30 <- O13$NEE_f * 60 * 30 *12 / 1000000
+O13c <- aggregate(O13, by = list(O13$DoY), FUN = "sum")
+O13c$DoY <- O13c$DoY / 48
+
+
+daily_sum <- ggplot(O13c, aes(DoY, dailyNEE_30)) +
+>>>>>>> 92783b1be08099231c2432104c5d09afed830446
   
              geom_segment(xend = daily13_sum$DoY, yend = 0, colour = "#313594", size = 1) +
         
