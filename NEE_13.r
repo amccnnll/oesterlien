@@ -11,8 +11,11 @@ nee.palette <- colorRampPalette(brewer.pal(11, 'RdBu'), space='Lab')
 Oesterlien_C_R_2013$NEE_f_gC_30 <- Oesterlien_C_R_2013$NEE_f / 1000000 * 60 * 30 * 12
 Oesterlien_C_R_2013$NEE_f_gC_cumu <- cumsum(Oesterlien_C_R_2013$NEE_f_gC_30)
 
+Oesterlien_C_R_2014$NEE_f_gC_30 <- Oesterlien_C_R_2014$NEE_f / 1000000 * 60 * 30 * 12
+Oesterlien_C_R_2014$NEE_f_gC_cumu <- cumsum(Oesterlien_C_R_2014$NEE_f_gC_30)
+
 # cumulative NEE plots
-ccumugC13 <- ggplot(Oesterlien_C_R_2013, aes(x = DoY, y = NEE_f_gC_cumu)) +
+ccumugC14 <- ggplot(Oesterlien_C_R_2013, aes(x = DoY, y = NEE_f_gC_cumu)) +
 
              geom_vline(xintercept = 142,
                         color = "black",
