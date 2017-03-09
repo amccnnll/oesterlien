@@ -23,7 +23,7 @@ NEE_heatmap_15 <- ggplot(Oesterlien_C_R_2015,
   
   theme_bw() +
   
-  xlab("") +
+  xlab("Day of year") +
   
   ylab("Hour of day") +
   

@@ -69,10 +69,21 @@ daily_nee13 <- ggplot(daily13_sum, aes(DoY, NEE_30)) +
 
   theme_bw() +
 
+  geom_vline(xintercept = 142,
+             color = "black",
+             linetype = "dashed") +
+
+  geom_vline(xintercept = 292,
+             color = "black",
+             linetype = "dashed") +
+
+  geom_hline(yintercept = 0,
+            color = "black") +
+
   scale_x_continuous(expand = c(0, 0),
                      limits = c(0, 365),
                      breaks = c(50, 100, 150, 200, 250, 300, 350),
-                     labels = c("", "", "", "", "", "", "")) +
+                     labels = c(50, 100, 150, 200, 250, 300, 350)) +
 
   scale_y_continuous(expand = c(0,0),
                      limits = c(-4, 2),
@@ -103,10 +114,21 @@ daily_nee14 <- ggplot(daily14_sum, aes(DoY, NEE_30)) +
 
   theme_bw() +
 
+  geom_vline(xintercept = 130,
+             color = "black",
+             linetype = "dashed") +
+
+  geom_vline(xintercept = 269,
+             color = "black",
+             linetype = "dashed") +
+
+  geom_hline(yintercept = 0,
+            color = "black") +
+
   scale_x_continuous(expand = c(0, 0),
                      limits = c(0, 365),
                      breaks = c(50, 100, 150, 200, 250, 300, 350),
-                     labels = c("", "", "", "", "", "", "")) +
+                     labels = c(50, 100, 150, 200, 250, 300, 350)) +
 
   scale_y_continuous(expand = c(0,0),
                      limits = c(-4, 2),
@@ -136,6 +158,17 @@ daily_nee15 <- ggplot(daily15_sum, aes(DoY, NEE_30)) +
   #geom_smooth(method = "loess", span = 0.1, colour = "red", se = F) +
 
   theme_bw() +
+
+  geom_vline(xintercept = 148,
+             color = "black",
+             linetype = "dashed") +
+
+  geom_vline(xintercept = 275,
+             color = "black",
+             linetype = "dashed") +
+
+  geom_hline(yintercept = 0,
+            color = "black") +
 
   scale_x_continuous(expand = c(0, 0),
                      limits = c(0, 365),
