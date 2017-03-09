@@ -27,16 +27,14 @@ write.csv(dat, file = "2015_soilprofile_dailymeanFINAL_int.csv")
 x2 <- aggregate(Temp ~ Day + Depth, data = x, FUN= "mean")
 
 #############################################
-##                                        ##
-##  TO DO: REMOVE -9999 from Oesterlien   ##
-##   files, re-read, make final plots!    ##
-##                                        ##
+##                                         ##
+##                                         ##
+##                                         ##
 #############################################
 
 #O13$dailyNEE_30 <- O13$NEE_f * 60 * 30 *12 / 1000000
 daily13 <- Oesterlien_C_R_2013
 daily13$Date <- NULL
-<<<<<<< HEAD
 
 daily13$NEE_30 <- daily13$NEE_f * 30 * 60 * 12 / 1000000
 #daily13_mean <- aggregate(daily13, by = list(daily13$DoY), FUN = "mean", na.rm = T)

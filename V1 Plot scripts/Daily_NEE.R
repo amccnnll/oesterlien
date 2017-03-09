@@ -38,7 +38,7 @@ daily14_sum$overlap <- doy_index$overlap
 daily14_sum$DoY <- doy_index$fourteen
 daily14_sum$NEE_roll <- rollapply(data = daily14_sum$NEE_30, width = 7, FUN = mean, partial = T)
 daily14_sum$NEE_roll[1:3] <- NA
-daily14_sum$NEE_roll[363:365] <- NA
+daily14_sum$NEE_roll[221:222] <- NA
 
 # 2015
 daily15 <- Oesterlien_C_R_2015
@@ -54,7 +54,7 @@ daily15_sum$Hour <- daily15_sum$Hour / 48
 daily15_sum$overlap <- doy_index$overlap
 daily15_sum$DoY <- doy_index$fifteen
 daily15_sum$NEE_roll <- rollapply(data = daily15_sum$NEE_30, width = 7, FUN = mean, partial = T)
-daily15_sum$NEE_roll[1:3] <- NA
+daily15_sum$NEE_roll[193] <- NA
 daily15_sum$NEE_roll[363:365] <- NA
 
 # PLOTS
@@ -112,7 +112,7 @@ daily_nee14 <- ggplot(daily14_sum, aes(DoY, NEE_30)) +
                      limits = c(-4, 2),
                      breaks = c(-4, -3, -2, -1, 0, 1, 2)) +
 
-  ylab("Daily NEE gC m-2") +
+  ylab("") +
   xlab("") +
 
   theme(axis.text.x = element_text(size=12,
@@ -160,5 +160,12 @@ daily_nee15 <- ggplot(daily15_sum, aes(DoY, NEE_30)) +
 
 # subplots
 
-daily_nee <- grid.arrange(daily_nee13, daily_nee14, daily_nee15, ncol = 1)
+daily_nee <- grid.arrange(arrangeGrob(daily_nee13,
+                                      daily_nee14,
+                                      daily_nee15,
+                                      ncol = 1,
+                                      left = textGrob(expression("NEE" ~ (gC ~ m^{-2} ~ d^{-1})),
+                                                                 rot = 90,
+                                                                 vjust = 0.5,
+                                                                 hjust = 0.5)))
 daily_nee
