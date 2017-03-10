@@ -2,6 +2,17 @@
 # version 1.0
 # alistair mcconnell
 
+####################
+#                  #
+#      to do:      #
+#   resubset all   #
+#   data as daily  #
+#    mean values   #
+#        &         #
+#      replot      #
+#                  #
+####################
+
 # SUBSET MAMA JAMA
 OCR13ov <- subset(Oesterlien_C_R_2013, Oesterlien_C_R_2013$DoY >= 193)
 OCR13ov <- subset(OCR13ov, OCR13ov$DoY <= 222)
