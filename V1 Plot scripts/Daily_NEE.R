@@ -69,14 +69,11 @@ daily_nee13 <- ggplot(daily13_sum, aes(DoY, NEE_30)) +
 
   theme_bw() +
 
-  geom_vline(xintercept = 142,
+  geom_vline(xintercept = c(76, 141, 230, 280),
              color = "black",
-             linetype = "dashed") +
-
-  geom_vline(xintercept = 292,
-             color = "black",
-             linetype = "dashed") +
-
+             linetype = "dashed",
+             alpha = 0.5) +
+ 
   geom_hline(yintercept = 0,
             color = "black") +
 
@@ -114,13 +111,10 @@ daily_nee14 <- ggplot(daily14_sum, aes(DoY, NEE_30)) +
 
   theme_bw() +
 
-  geom_vline(xintercept = 130,
+  geom_vline(xintercept = c(89, 129, 225, 268),
              color = "black",
-             linetype = "dashed") +
-
-  geom_vline(xintercept = 269,
-             color = "black",
-             linetype = "dashed") +
+             linetype = "dashed",
+             alpha = 0.5) +
 
   geom_hline(yintercept = 0,
             color = "black") +
@@ -159,13 +153,10 @@ daily_nee15 <- ggplot(daily15_sum, aes(DoY, NEE_30)) +
 
   theme_bw() +
 
-  geom_vline(xintercept = 148,
+  geom_vline(xintercept = c(104, 147, 226, 275),
              color = "black",
-             linetype = "dashed") +
-
-  geom_vline(xintercept = 275,
-             color = "black",
-             linetype = "dashed") +
+             linetype = "dashed",
+             alpha = 0.5) +
 
   geom_hline(yintercept = 0,
             color = "black") +
