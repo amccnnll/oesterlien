@@ -8,7 +8,7 @@ met14 <- subset(met_all, met_all$Year == 2014)
 met15 <- subset(met_all, met_all$Year == 2015)
 
 
-# aggregate daily meanss
+# aggregate daily sums
 met13sum <- met13
 met13sum$Date <- NULL
 met13sum <- aggregate(met13sum, by = list(met13sum$DoY), FUN = sum, na.rm = T)

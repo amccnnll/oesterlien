@@ -19,7 +19,7 @@ NEE_heatmap_13 <- ggplot(Oesterlien_C_R_2013,
                        limits=c(-12, 12)) +
   
    # net rad seasons
-   geom_vline(xintercept = 77, color = "black", linetype = "dashed", size = 1, alpha = 0.5) +
+  geom_vline(xintercept = 77, color = "black", linetype = "dashed", size = 1, alpha = 0.5) +
   geom_vline(xintercept = 143, color = "black", linetype = "dashed", size = 1, alpha = 0.5) +
   geom_vline(xintercept = 280, color = "black", linetype = "dashed", size = 1, alpha = 0.5) +
   geom_vline(xintercept = 227, color = "black", linetype = "dashed", size = 1, alpha = 0.5 ) +
