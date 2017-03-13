@@ -47,7 +47,7 @@ Oesterlien_C_R_2014$season <- "winter"
 Oesterlien_C_R_2014 <- transform(Oesterlien_C_R_2014, season = ifelse(DoY >= 89, "spring", season))
 Oesterlien_C_R_2014 <- transform(Oesterlien_C_R_2014, season = ifelse(DoY >= 129, "summer", season))
 Oesterlien_C_R_2014 <- transform(Oesterlien_C_R_2014, season = ifelse(DoY >= 225, "autumn", season))
-Oesterlien_C_R_2013 <- transform(Oesterlien_C_R_2013, season = ifelse(DoY >= 268, "winter", season))
+Oesterlien_C_R_2014 <- transform(Oesterlien_C_R_2014, season = ifelse(DoY >= 268, "winter", season))
 
 met14_daily$season <- "winter"
 met14_daily <- transform(met14_daily, season = ifelse(DoY >= 89, "spring", season))
