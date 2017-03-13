@@ -20,13 +20,14 @@ metSTATS14sd <- aggregate(met14_daily, by = list(met14_daily$season), FUN = sd, 
 metSTATS15sd <- aggregate(met15_daily, by = list(met15_daily$season), FUN = sd, na.rm = T)
 
 
+###
 
-
+# aggregate(daily13_mean, by = list(daily13_mean$Year), FUN = mean, na.rm = T)
 
 ###
 
 write.csv(daily13_sum, file = "daily13_sum.csv")
-write.csv(daily14_sum, file = "daily14_sum.csv")
+write.csv(daily14_mean, file = "daily14_mean.csv")
 write.csv(daily15_sum, file = "daily15_sum.csv")
 
 write.csv(met13_daily, file = "met13_daily.csv")
