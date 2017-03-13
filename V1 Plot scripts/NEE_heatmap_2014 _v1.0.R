@@ -18,8 +18,7 @@ NEE_heatmap_14 <- ggplot(Oesterlien_C_R_2014,
                        breaks=c(-12, -10, -8, -6, -4, -2, 0, 2, 4, 6, 8, 10, 12),
                        limits=c(-12, 12)) +
   
-  geom_vline(xintercept = 130, color = "black", linetype = "dashed", size = 1) +
-  geom_vline(xintercept = 269, color = "black", linetype = "dashed", size = 1) +
+  geom_vline(xintercept = seasons_14, color = "black", linetype = "dashed", size = 1) +
   
   theme_bw() +
   

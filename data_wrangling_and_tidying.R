@@ -2,6 +2,10 @@
 # version 1.0
 # alistair mcconnell
 
+seasons_13 = c(76, 141, 230, 281)
+seasons_14 = c(89, 129, 225, 268)
+seasons_15 = c(104, 147, 226, 275)
+
 Oesterlien_C_R_2013[Oesterlien_C_R_2013 == -10000] <- NA
 Oesterlien_C_R_2013[Oesterlien_C_R_2013 == -9999] <- NA
 
@@ -23,6 +27,24 @@ Oesterlien_C_R_2013 <- transform(Oesterlien_C_R_2013, season = ifelse(DoY >= 76,
 Oesterlien_C_R_2013 <- transform(Oesterlien_C_R_2013, season = ifelse(DoY >= 141, "summer", season))
 Oesterlien_C_R_2013 <- transform(Oesterlien_C_R_2013, season = ifelse(DoY >= 230, "autumn", season))
 Oesterlien_C_R_2013 <- transform(Oesterlien_C_R_2013, season = ifelse(DoY >= 281, "winter", season))
+
+x13$season <- "winter"
+x13 <- transform(x13, season = ifelse(DoY >= 76, "spring", season))
+x13 <- transform(x13, season = ifelse(DoY >= 141, "summer", season))
+x13 <- transform(x13, season = ifelse(DoY >= 230, "autumn", season))
+x13 <- transform(x13, season = ifelse(DoY >= 281, "winter", season))
+
+x14$season <- "winter"
+x14 <- transform(x14, season = ifelse(DoY >= 89, "spring", season))
+x14 <- transform(x14, season = ifelse(DoY >= 129, "summer", season))
+x14 <- transform(x14, season = ifelse(DoY >= 225, "autumn", season))
+x14 <- transform(x14, season = ifelse(DoY >= 268, "winter", season))
+
+x15$season <- "winter"
+x15 <- transform(x15, season = ifelse(DoY >= 104, "spring", season))
+x15 <- transform(x15, season = ifelse(DoY >= 147, "summer", season))
+x15 <- transform(x15, season = ifelse(DoY >= 226, "autumn", season))
+x15 <- transform(x15, season = ifelse(DoY >= 375, "winter", season))
 
 met13_daily$season <- "winter"
 met13_daily <- transform(met13_daily, season = ifelse(DoY >= 76, "spring", season))

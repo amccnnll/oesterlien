@@ -1,4 +1,4 @@
-nee.palette <- colorRampPalette(rev(brewer.pal(11, "RdYlBu")), space='Lab')
+nee.palette <- colorRampPalette(rev(brewer.pal(11, "RdBu")), space='Lab')
 
 # Remeber to set dat
 

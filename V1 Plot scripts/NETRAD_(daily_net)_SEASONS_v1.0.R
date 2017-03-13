@@ -25,8 +25,7 @@ r13 <- ggplot(met13_daily,
                      breaks = c(50, 100, 150, 200, 250, 300, 350)) +
   scale_y_continuous(expand = c(0, 0),
                      limits = c(-150, 250)) +
-  geom_vline(xintercept = 142, linetype = "dashed") +
-  geom_vline(xintercept = 292, linetype = "dashed") +
+  geom_vline(xintercept = seasons_13, linetype = "dashed", alpha = 0.5) +
   geom_hline(yintercept = 0) +
   theme(axis.text.x = element_text(size=12,
                                    margin = margin(10,0,0,0, "pt")),
@@ -47,8 +46,7 @@ r14 <- ggplot(met14_daily,
                      breaks = c(50, 100, 150, 200, 250, 300, 350)) +
   scale_y_continuous(expand = c(0, 0),
                      limits = c(-150, 250)) +
-  geom_vline(xintercept = 130, linetype = "dashed") +
-  geom_vline(xintercept = 269, linetype = "dashed") +
+  geom_vline(xintercept = seasons_14, linetype = "dashed", alpha = 0.5) +
   geom_hline(yintercept = 0) +
   theme(axis.text.x = element_text(size=12,
                                    margin = margin(10,0,0,0, "pt")),
@@ -69,8 +67,7 @@ r15 <- ggplot(met15_daily,
                      breaks = c(50, 100, 150, 200, 250, 300, 350)) +
   scale_y_continuous(expand = c(0, 0),
                      limits = c(-150, 250)) +
-  geom_vline(xintercept = 148, linetype = "dashed") +
-  geom_vline(xintercept = 275, linetype = "dashed") +
+  geom_vline(xintercept = seasons_15, linetype = "dashed", alpha = 0.5) +
   geom_hline(yintercept = 0) +
   theme(axis.text.x = element_text(size=12,
                                    margin = margin(10,0,0,0, "pt")),
