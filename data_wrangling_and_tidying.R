@@ -9,6 +9,8 @@ seasons_15 = c(104, 147, 226, 275)
 Oesterlien_C_R_2013[Oesterlien_C_R_2013 == -10000] <- NA
 Oesterlien_C_R_2013[Oesterlien_C_R_2013 == -9999] <- NA
 
+Oesterlien_C_R_2013[Oesterlien_C_R_2013 < -1000] <- NA
+
 Oesterlien_C_R_2014[Oesterlien_C_R_2014 == -10000] <- NA
 Oesterlien_C_R_2014[Oesterlien_C_R_2014 == -9999] <- NA
 
@@ -27,6 +29,12 @@ Oesterlien_C_R_2013 <- transform(Oesterlien_C_R_2013, season = ifelse(DoY >= 76,
 Oesterlien_C_R_2013 <- transform(Oesterlien_C_R_2013, season = ifelse(DoY >= 141, "summer", season))
 Oesterlien_C_R_2013 <- transform(Oesterlien_C_R_2013, season = ifelse(DoY >= 230, "autumn", season))
 Oesterlien_C_R_2013 <- transform(Oesterlien_C_R_2013, season = ifelse(DoY >= 281, "winter", season))
+
+CX13$season <- "winter"
+CX13 <- transform(CX13, season = ifelse(DoY >= 76, "spring", season))
+CX13 <- transform(CX13, season = ifelse(DoY >= 141, "summer", season))
+CX13 <- transform(CX13, season = ifelse(DoY >= 230, "autumn", season))
+CX13 <- transform(CX13, season = ifelse(DoY >= 281, "winter", season))
 
 x13$season <- "winter"
 x13 <- transform(x13, season = ifelse(DoY >= 76, "spring", season))

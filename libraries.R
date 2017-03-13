@@ -1,6 +1,7 @@
 # LIBRARIES
 
 library(data.table)
+library(GGally)
 library(tidyverse)
 library(graphics)
 library(sp)
@@ -15,6 +16,7 @@ library(tidyr)
 library(plotly)
 library(zoo)
 library(grid)
+library(scatterplot3d)
 library(viridis)
 library(ggmap)
 library(raster)

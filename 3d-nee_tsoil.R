@@ -40,8 +40,8 @@ d <- with(prime_by_winter, {
 prime3d <- grid.arrange(a, b, c, d, ncol = 2)
 prime3d
 
-ptest2 <- plot_ly(prime_by_summer, x = ~Rnet, y = ~Tsoil, z = ~NEE_f, 
-                  marker = list(size = 3, color = ~hour, colorscale = "Viridis", showscale = T))
+ptest2 <- plot_ly(prime_by_summer, x = ~hour, y = ~Tsoil, z = ~Rnet, 
+                  marker = list(size = 3, color = ~NEE_f, colorscale = "Viridis", showscale = T))
 
 ptest2 <- ptest2 + add_markers(opacity = 0.6))
 ptest2

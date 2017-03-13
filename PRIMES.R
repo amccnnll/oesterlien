@@ -6,9 +6,9 @@
 # data wranglin' yeehaw!
 Oesterlien_C_R_2013 <- Oesterlien_C_R_2013[1:17520,]
 
-prime13 <- data.frame(Oesterlien_C_R_2013$DoY, Oesterlien_C_R_2013$Hour, Oesterlien_C_R_2013$NEE_f, Oesterlien_C_R_2013$season, Oesterlien_C_R_2013$Tair_f, met13$Net_radiation_Wm.2, X2013SoilTemp$Temp, met13$Air_pressure_mbar, met13$Wind_speed_avg_ms.1, met13$Soil_moisture_10.cm_vol, Oesterlien_C_R_2013$Ustar, Oesterlien_C_R_2013$GPP_f, Oesterlien_C_R_2013$Reco, met13$Shortwave_incoming_radiation_Wm.2, met13$Shortwave_net_radiation_Wm.2, met13$Longwave_incoming_radiation_Wm.2, met13$Longwave_net_radiation_Wm.2, met13$Wind.direction_degrees)
+prime13 <- data.frame(Oesterlien_C_R_2013$DoY, Oesterlien_C_R_2013$Hour, Oesterlien_C_R_2013$NEE_f, CX13$NEE_f, Oesterlien_C_R_2013$season, Oesterlien_C_R_2013$Tair_f, met13$Net_radiation_Wm.2, X2013SoilTemp$Temp, met13$Air_pressure_mbar, met13$Wind_speed_avg_ms.1, met13$Soil_moisture_10.cm_vol, Oesterlien_C_R_2013$Ustar, Oesterlien_C_R_2013$GPP_f, CX13$GPP_f, Oesterlien_C_R_2013$Reco, CX13$Reco, met13$Shortwave_incoming_radiation_Wm.2, met13$Shortwave_net_radiation_Wm.2, met13$Longwave_incoming_radiation_Wm.2, met13$Longwave_net_radiation_Wm.2, met13$Wind.direction_degrees, CX13$H_f, CX13$LE_f, CX13$Tair_f, CX13$Tsoil_f, CX13$Ustar)
 
-setnames(prime13, c("DoY", "hour", "NEE_f", "season", "Tair", "Rnet", "Tsoil", "Airp", "Wind_s", "Soil_m", "ustar", "GPP", "Reco", "SW_incoming", "SW_net", "LW_incoming", "LW_net", "Wind_dir"))
+setnames(prime13, c("DoY", "hour", "NEE_f1", "NEE_f2", "season", "Tair1", "Rnet", "Tsoil1", "Airp", "Wind_s", "Soil_m", "ustar1", "GPP1", "GPP2", "Reco1", "Reco2", "SW_in", "SW_net", "LW_in", "LW_net", "Wind_dir", "H2", "LE2", "Tair2", "Tsoil2", "ustar2"))
 
 prime13$NEE_gC_30 <- prime13$NEE_f * 60 * 30 * 12 / 1000000
 
@@ -84,3 +84,32 @@ primesX <- rbind(prime13_by_season, prime14_by_season, prime15_by_season)
 ######
 
 ggplot(primesX, aes(hour, NEE_f)) + geom_line() + facet_grid(year ~ season)
+
+
+#####
+
+# OFF GRID
+
+df <- prime13
+df <- df %>% dplyr::select(-season, -hour, -H2, -LE2, -Soil_m, -SW_in, -SW_net, -LW_in, -LW_net, -NEE_f1, -NEE_f2, -GPP1, -GPP2, -Reco1, -Reco2, -Tair1, -Tair2, -Tsoil1, -Tsoil2, -Airp, -ustar1, -ustar2, -Wind_dir, -Wind_s, everything())
+
+df13 <- aggregate.data.frame(df, by = list(df$season, df$hour), FUN = mean, na.rm = T)
+
+df13$season <- NULL
+names(df13)[1] <-"season"
+df13$hour <- NULL
+names(df13)[2]<-"hour"
+
+df1 <- subset(df13, df13$season == "spring")
+df2 <- subset(df13, df13$season == "summer")
+df3 <- subset(df13, df13$season == "autumn")
+df4 <- subset(df13, df13$season == "winter")
+
+df1$DoY <- NULL
+df1$NEE_gC_30 <- NULL
+df2$DoY <- NULL
+df2$NEE_gC_30 <- NULL
+df3$DoY <- NULL
+df3$NEE_gC_30 <- NULL
+df4$DoY <- NULL
+df4$NEE_gC_30 <- NULL

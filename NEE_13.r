@@ -21,21 +21,24 @@ ccumugC13 <- ggplot(Oesterlien_C_R_2013, aes(x = DoY, y = NEE_f_gC_cumu)) +
              geom_hline(yintercept = 0,
                         color = "black") +
 
-             geom_line(color = "red",
+             geom_line(color = "darkslateblue",
                        size = 1) +
              geom_line(data = Oesterlien_C_R_2014,
                        aes(x = DoY, y = NEE_f_gC_cumu),
-                       colour = "blue",
+                       colour = "orangered3",
                        size = 1) +
-
+             geom_vline(xintercept = seasons_13, linetype = "dashed", colour = "darkslateblue", alpha = 0.5) +
+             geom_vline(xintercept = seasons_14, linetype = "dashed", colour = "orangered3", alpha = 0.5) +
+  
              theme_bw() +
              xlab("") +
-             ylab(bquote('Cumulative NEE [gC '~m^-2~']')) +
+             ylab(bquote('Cumulative NEE [g C '~m^-2~']')) +
 
              scale_x_continuous(expand = c(0, 0),
                                 breaks = pretty(O13$DoY, n = 10)) +
              scale_y_continuous(expand = c(0,0),
-                                limits = c(-100, 50)) +
+                                limits = c(-100, 50),
+                                breaks = c(-100, -75, -50, -25, 0, 25, 50)) +
 
              theme(axis.text.x = element_text(size = 12,
                                               margin = margin(10,0,0,0, "pt")),
@@ -49,13 +52,13 @@ ccumugC13 <- ggplot(Oesterlien_C_R_2013, aes(x = DoY, y = NEE_f_gC_cumu)) +
                       x = 15,
                       y = 40,
                       label = "--- 2013",
-                      colour = "red",
+                      colour = "darkslateblue",
                       fontface = 2) +
              annotate("text",
                       x = 15,
                       y = 30,
                       label = "--- 2014",
-                      colour = "blue",
+                      colour = "orangered3",
                       fontface = 2)
 
 
