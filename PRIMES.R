@@ -6,9 +6,9 @@
 # data wranglin' yeehaw!
 Oesterlien_C_R_2013 <- Oesterlien_C_R_2013[1:17520,]
 
-prime13 <- data.frame(Oesterlien_C_R_2013$DoY, Oesterlien_C_R_2013$Hour, Oesterlien_C_R_2013$NEE_f, CX13$NEE_f, Oesterlien_C_R_2013$season, Oesterlien_C_R_2013$Tair_f, met13$Net_radiation_Wm.2, X2013SoilTemp$Temp, met13$Air_pressure_mbar, met13$Wind_speed_avg_ms.1, met13$Soil_moisture_10.cm_vol, Oesterlien_C_R_2013$Ustar, Oesterlien_C_R_2013$GPP_f, CX13$GPP_f, Oesterlien_C_R_2013$Reco, CX13$Reco, met13$Shortwave_incoming_radiation_Wm.2, met13$Shortwave_net_radiation_Wm.2, met13$Longwave_incoming_radiation_Wm.2, met13$Longwave_net_radiation_Wm.2, met13$Wind.direction_degrees, CX13$H_f, CX13$LE_f, CX13$Tair_f, CX13$Tsoil_f, CX13$Ustar)
+prime13 <- data.frame(Oesterlien_C_R_2013$DoY, Oesterlien_C_R_2013$Hour, CX13$NEE_f, Oesterlien_C_R_2013$season, Oesterlien_C_R_2013$Tair_f, met13$Net_radiation_Wm.2, X2013SoilTemp$Temp, met13$Air_pressure_mbar, met13$Wind_speed_avg_ms.1, met13$Soil_moisture_10.cm_vol, Oesterlien_C_R_2013$Ustar, CX13$GPP_f, CX13$Reco, met13$Shortwave_incoming_radiation_Wm.2, met13$Shortwave_net_radiation_Wm.2, met13$Longwave_incoming_radiation_Wm.2, met13$Longwave_net_radiation_Wm.2, met13$Wind.direction_degrees, CX13$H_f, CX13$LE_f, CX13$Tsoil_f)
 
-setnames(prime13, c("DoY", "hour", "NEE_f1", "NEE_f2", "season", "Tair1", "Rnet", "Tsoil1", "Airp", "Wind_s", "Soil_m", "ustar1", "GPP1", "GPP2", "Reco1", "Reco2", "SW_in", "SW_net", "LW_in", "LW_net", "Wind_dir", "H2", "LE2", "Tair2", "Tsoil2", "ustar2"))
+setnames(prime13, c("DoY", "hour", "NEE", "season", "Tair", "Rnet", "Tsoil", "Airp", "Wind_s", "Soil_m", "ustar", "GPP", "Reco", "SW_in", "SW_net", "LW_in", "LW_net", "Wind_dir", "H", "LE", "Tground"))
 
 prime13$NEE_gC_30 <- prime13$NEE_f * 60 * 30 * 12 / 1000000
 
@@ -19,15 +19,16 @@ names(prime13_by_season)[1]<-"season"
 prime13_by_season$hour <- NULL
 names(prime13_by_season)[2]<-"hour"
 
-prime13_suspect <- ggplot(prime_by_season) +
-                   geom_line(aes(hour, NEE_f), colour = "darkslateblue") +
+prime13_suspect <- ggplot(prime13_by_season) +
+                   geom_line(aes(hour, Reco), colour = "darkslateblue") +
+                   geom_line(aes(hour, GPP), colour = "darkturquoise") +
+                   geom_line(aes(hour, NEE), colour = "orangered") +
                    theme_bw() + 
                    scale_x_continuous(expand = c(0, 0),
                                     limits = c(0, 23.5),
                                     breaks = c(0, 6, 12, 18, 23.5),
                                     labels = c("0", "6", "12", "18", "24")) +
-                   scale_y_continuous(expand = c(0, 0),
-                                      limits = c(-3, 1.5)) +
+                   scale_y_continuous(expand = c(0, 0)) +
                    facet_grid(. ~ season) +
                    theme(panel.spacing = unit(1, "lines"))
   
@@ -91,7 +92,7 @@ ggplot(primesX, aes(hour, NEE_f)) + geom_line() + facet_grid(year ~ season)
 # OFF GRID
 
 df <- prime13
-df <- df %>% dplyr::select(-season, -hour, -H2, -LE2, -Soil_m, -SW_in, -SW_net, -LW_in, -LW_net, -NEE_f1, -NEE_f2, -GPP1, -GPP2, -Reco1, -Reco2, -Tair1, -Tair2, -Tsoil1, -Tsoil2, -Airp, -ustar1, -ustar2, -Wind_dir, -Wind_s, everything())
+df <- df %>% dplyr::select(-season, -hour, -H, -LE, -Soil_m, -SW_in, -SW_net, -LW_in, -LW_net, -NEE_f, -GPP, -Reco, -Tair, -Tsoil, -Tground, -Airp, -ustar, -Wind_dir, -Wind_s, everything())
 
 df13 <- aggregate.data.frame(df, by = list(df$season, df$hour), FUN = mean, na.rm = T)
 

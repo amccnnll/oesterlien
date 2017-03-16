@@ -30,6 +30,7 @@ Oesterlien_C_R_2013 <- transform(Oesterlien_C_R_2013, season = ifelse(DoY >= 141
 Oesterlien_C_R_2013 <- transform(Oesterlien_C_R_2013, season = ifelse(DoY >= 230, "autumn", season))
 Oesterlien_C_R_2013 <- transform(Oesterlien_C_R_2013, season = ifelse(DoY >= 281, "winter", season))
 
+CX13$GPP_f <- CX13$GPP_f * -1
 CX13$season <- "winter"
 CX13 <- transform(CX13, season = ifelse(DoY >= 76, "spring", season))
 CX13 <- transform(CX13, season = ifelse(DoY >= 141, "summer", season))
