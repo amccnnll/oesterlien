@@ -10,7 +10,7 @@ prime13 <- data.frame(Oesterlien_C_R_2013$DoY, Oesterlien_C_R_2013$Hour, CX13$NE
 
 setnames(prime13, c("DoY", "hour", "NEE", "season", "Tair", "Rnet", "Tsoil", "Airp", "Wind_s", "Soil_m", "ustar", "GPP", "Reco", "SW_in", "SW_net", "LW_in", "LW_net", "Wind_dir", "H", "LE", "Tground"))
 
-prime13$NEE_gC_30 <- prime13$NEE_f * 60 * 30 * 12 / 1000000
+prime13$NEE_gC_30 <- prime13$NEE * 60 * 30 * 12 / 1000000
 
 prime13_by_season <- aggregate.data.frame(prime13, by = list(prime13$season, prime13$hour), FUN = mean, na.rm = T)
 
