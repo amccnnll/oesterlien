@@ -50,3 +50,30 @@ j15 <- Oesterlien_C_R_2015
 j15$season <- as.factor(j15$season)
 j15$Date <- NULL
 aggregate((j15$NEE_f * 60 * 30 * 12 / 1000000), by = list(j15$season), FUN = sum, na.rm = T)
+
+###
+
+warn <- as.character("==============================")
+
+
+
+
+
+
+
+
+print(warn)
+
+st <- daily13_sum$NEE_f_gC_30
+
+mean(st)
+
+min(st, na.rm = T)
+daily13_sum$DoY[which.min(st)]
+
+max(st, na.rm = T)
+daily13_sum$DoY[which.max(st)]
+
+
+
+
