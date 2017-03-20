@@ -64,7 +64,7 @@ warn <- as.character("==============================")
 
 print(warn)
 
-st <- daily13_sum$NEE_f_gC_30
+st <- subset(daily14_sum$NEE_f_gC_30, daily14_sum$season == "winter")
 
 mean(st)
 
@@ -74,6 +74,6 @@ daily13_sum$DoY[which.min(st)]
 max(st, na.rm = T)
 daily13_sum$DoY[which.max(st)]
 
-
+table(st > 0)
 
 

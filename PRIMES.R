@@ -138,7 +138,7 @@ ggplot(primesX) +
 # OFF GRID
 
 df <- prime13
-df <- df %>% dplyr::select(-season, -hour, -H, -LE, -Soil_m, -SW_in, -SW_net, -LW_in, -LW_net, -NEE_f, -GPP, -Reco, -Tair, -Tsoil, -Tground, -Airp, -ustar, -Wind_dir, -Wind_s, everything())
+df <- df %>% dplyr::select(-season, -hour, -H, -LE, -Soil_m, -SW_in, -SW_net, -LW_in, -LW_net, -NEE, -GPP, -Reco, -Tair, -Tsoil, -Tground, -Airp, -ustar, -Wind_dir, -Wind_s, everything())
 
 df13 <- aggregate.data.frame(df, by = list(df$season, df$hour), FUN = mean, na.rm = T)
 
