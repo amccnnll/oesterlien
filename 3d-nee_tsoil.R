@@ -44,4 +44,5 @@ ptest2 <- plot_ly(prime_by_summer, x = ~Tsoil, y = ~Rnet, z = ~NEE_f,
                   marker = list(size = 3, color = ~hour, colorscale = "Viridis", showscale = F))
 
 ptest2 <- ptest2 + add_markers(opacity = 0.6))
-ptest2
+ptest2 
+
