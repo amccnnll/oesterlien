@@ -141,3 +141,4 @@ daily15_mean <- transform(daily15_mean, season = ifelse(DoY >= 104, "spring", se
 daily15_mean <- transform(daily15_mean, season = ifelse(DoY >= 147, "summer", season))
 daily15_mean <- transform(daily15_mean, season = ifelse(DoY >= 226, "autumn", season))
 daily15_mean <- transform(daily15_mean, season = ifelse(DoY >= 275, "winter", season))
+
