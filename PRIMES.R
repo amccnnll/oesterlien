@@ -160,3 +160,4 @@ df3$DoY <- NULL
 df3$NEE_gC_30 <- NULL
 df4$DoY <- NULL
 df4$NEE_gC_30 <- NULL
+
