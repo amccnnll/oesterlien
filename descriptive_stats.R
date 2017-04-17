@@ -64,7 +64,7 @@ warn <- as.character("==============================")
 
 print(warn)
 
-st <- subset(daily13_sum$NEE_f_gC_30, daily13_sum$season == "summer")
+st <- subset(daily13_sum$NEE_f_gC_30, daily13_sum$season == "autumn")
 
 mean(st)
 
