@@ -56,12 +56,6 @@ aggregate((j15$NEE_f * 60 * 30 * 12 / 1000000), by = list(j15$season), FUN = sum
 warn <- as.character("==============================")
 
 
-
-
-
-
-
-
 print(warn)
 
 st <- subset(daily13_sum$NEE_f_gC_30, daily13_sum$season == "autumn")
