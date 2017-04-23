@@ -68,3 +68,4 @@ max(st, na.rm = T)
 daily13_sum$DoY[which.max(st)]
 
 table(st > 0)
+
